@@ -4,3 +4,6 @@ backups/
 elpa/
 auto-save-list/
 .tutor/
+eshell/
+
+projectile-bookmarks.eld
