@@ -13,13 +13,15 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(org-plantuml-jar-path "/home/khiem1/devtool/plantuml.jar")
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (linum-relative auto-complete magit helm-projectile helm projectile neotree evil-org evil-tutor evil-mc evil))))
+    (org linum-relative auto-complete magit helm-projectile helm projectile neotree evil-org evil-tutor evil-mc evil)))
+ '(plantuml-jar-path "/home/khiem1/devtool/plantuml.jar"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -101,3 +103,17 @@
 ; auto-complete - a completion framework
 (require 'auto-complete)
 (global-auto-complete-mode 1)
+
+
+;; plantuml-mode - a mode renders plantuml
+(require 'org)
+;; active Org-babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(;; other Babel languages
+   (plantuml . t)))
+
+
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "plantuml")))  ; don't ask for ditaa
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
