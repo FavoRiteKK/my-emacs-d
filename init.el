@@ -13,6 +13,8 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(c-basic-offset 4)
+ '(indent-tabs-mode nil)
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
@@ -28,7 +30,6 @@
  )
 
 (setq inhibit-startup-screen t)
-
 (global-linum-mode 1)
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
@@ -38,6 +39,8 @@
 
 
 ; evil - a vim layer
+(require 'evil)
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 (evil-mode t)
 
 
