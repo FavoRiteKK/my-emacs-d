@@ -1,0 +1,4 @@
+[submodule "elpa"]
+	path = elpa
+	url = https://github.com/FavoRiteKK/elpa.git
+	branch = master
